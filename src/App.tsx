@@ -8,10 +8,10 @@ import { useNavigate } from 'react-router-dom';
 const App:React.FC = () => {
   const navigate = useNavigate()
   const toRandom = () =>{
-    navigate('/random')
+    navigate('/Random')
   }
   const toQuize = () =>{
-    navigate('/quize')
+    navigate('/Quize')
   }
   return (
     <div className="App">

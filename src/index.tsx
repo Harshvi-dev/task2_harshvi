@@ -15,8 +15,8 @@ root.render(
       <Routes>
       <Route path="/" element={<App/>}>
       </Route>
-      <Route path='/random' element={<Random></Random>}></Route>
-      <Route path="/quize" element={<Quiz></Quiz>}></Route>
+      <Route path='/Random' element={<Random></Random>}></Route>
+      <Route path="/Quize" element={<Quiz></Quiz>}></Route>
       </Routes>
     </BrowserRouter>
 );
