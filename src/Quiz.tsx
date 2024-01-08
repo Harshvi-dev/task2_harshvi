@@ -39,23 +39,20 @@ const Quiz:React.FC = () => {
 
     const loadQus = ()=>{
         let currentQus = data[currentIndex];
-        console.log("qus:"+typeof(currentQus))
         if (currentQus == undefined) {
           currentQus = data[0];
-          console.log("currnt" + currentQus)
         }
-        // console.log(['data', data ,currentIndex,currentQus])
         return(
             <>
-            <h3 >{currentQus.question}</h3>
+            <h3>{currentQus.question}</h3>
             <div>
             {currentQus.options.map((option, index) => (
-                <>
+                <React.Fragment key={option}>
             <button key={index} onClick={() => selectAnswer(option)}>
               {option}
             </button>
             <br/>
-            </>
+            </React.Fragment>
           ))}
             </div>
             </>
@@ -68,13 +65,11 @@ const Quiz:React.FC = () => {
             setAnsCount((prev)=>prev+1)
         }
             setCurrentIndex((prev)=>prev+1)
-        
+            
     }
     const startAgain =()=>{
         setAnsCount(0);
         setCurrentIndex(0);
-        console.log("ans:"+currentIndex);
-        // loadQus()
     }
     const showAns = () =>{
         return (

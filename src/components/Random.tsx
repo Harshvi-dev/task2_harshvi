@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const Random : React.FC = () =>{
-    const [randomValue,setRandomValue] = useState<number|undefined>();
-    const [userValue,setUserValue] = useState<number|undefined>();
+    const [randomValue,setRandomValue] = useState<number>();
+    const [userValue,setUserValue] = useState<number>();
+    let randomValRef = useRef(0);
     let paragraphRef  = useRef<HTMLParagraphElement | null>(null);
 
     useEffect(()=>{
@@ -10,8 +11,9 @@ const Random : React.FC = () =>{
         var max = Math.floor(20);
         var result =Math.floor(Math.random() * (max - min) + min);
         setRandomValue(result);
-        console.log("random number :"+randomValue)
-    },[randomValue])
+        randomValRef.current=result;
+        console.log(" randomValRef:"+randomValRef.current)
+    },[])
     const getVal =(e:React.ChangeEvent<HTMLInputElement>)=>{
         var input = e.target.value;
         var Numberinput:number =+input;
@@ -19,13 +21,12 @@ const Random : React.FC = () =>{
     }
     const campareValue =(e:React.MouseEvent<HTMLButtonElement>)=>{
         e.preventDefault();
-        if (randomValue === userValue) {
+        if (randomValRef.current === userValue) {
             if (paragraphRef.current) {
                 paragraphRef.current.textContent = 'matched';
                 paragraphRef.current.style.color = 'green'
-                // window.location.reload();
               }
-        }else if (randomValue!<userValue!) {
+        }else if (randomValRef.current!<userValue!) {
             if (paragraphRef.current) {
                 paragraphRef.current.textContent = 'the gussed value is grater than actual value';
                 paragraphRef.current.style.color = 'red'
